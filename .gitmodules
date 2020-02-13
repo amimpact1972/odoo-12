@@ -1,0 +1,4 @@
+[submodule "elbasri/odoomageb"]
+	path = elbasri/odoomageb
+	url = git@github.com:elbasri/odoomageb.git
+	branch = master
