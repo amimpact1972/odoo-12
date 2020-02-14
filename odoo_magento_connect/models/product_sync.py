@@ -385,7 +385,7 @@ class MagentoSynchronization(models.TransientModel):
                 prodCategs.append(mageCategId)
         status = 2
         if prodObj.sale_ok:
-            status = 1
+            status = 2
         getProductData.update(
             name=prodObj.name,
             weight=prodObj.weight or 0.00,
