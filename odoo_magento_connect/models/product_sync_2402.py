@@ -15,8 +15,7 @@ from PIL import Image
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
-import logging
-_logger = logging.getLogger(__name__)
+
 
 class MagentoSynchronization(models.TransientModel):
     _inherit = "magento.synchronization"
@@ -210,11 +209,6 @@ class MagentoSynchronization(models.TransientModel):
                     else:
                         return [0, templateId]
                 else:
-##                    modif pour synch prix
-                    price = templateObj.list_price or 0.0
-                    _logger.info("ppppppppppppp**hhhhh")
-                    _logger.info(price)             
-##                    Fin modif pour synch prix                    
                     checkAttribute = self.with_context(
                         ctx)._check_attribute_with_set(attrSetObj, wkAttrLineObjs)
                     if checkAttribute[0] == -1:
@@ -246,8 +240,7 @@ class MagentoSynchronization(models.TransientModel):
                         extension_attributes = {
                             'configurable_product_links': mageProdIds,
                             'configurable_product_options': optionsData,
-                            'stock_item': stockData,
-                            'base_price': price,
+                            'stock_item': stockData
                         }
                         getProductData.update(
                             attribute_set_id=mageSetId,
@@ -401,9 +394,9 @@ class MagentoSynchronization(models.TransientModel):
         custom_attributes = [
             {"attribute_code": "description", "value": prodObj.description},
             {"attribute_code": "short_description", "value": prodObj.description_sale},
+            {"attribute_code": "category_ids", "value": prodCategs},
             {"attribute_code": "cost", "value": prodObj.standard_price or 0.00}
         ]
-        #{"attribute_code": "category_ids", "value": prodCategs},
         if 'custom_attributes' not in getProductData :
             getProductData['custom_attributes']=custom_attributes
         else :
@@ -432,9 +425,6 @@ class MagentoSynchronization(models.TransientModel):
         if stockItemId :
             stockData.update(itemId=stockItemId)
         return stockData
-
-
-
 
     def _get_product_media(self, prodObj):
         proImage = prodObj.image
@@ -571,11 +561,6 @@ class MagentoSynchronization(models.TransientModel):
         mapProdModel = self.env['magento.product']
         domain = [('instance_id', '=', ctx.get('instance_id'))]
         if tempObj and mageProdId:
-            price = tempObj.list_price or 0.0
-            namex = tempObj.name
-            codex = tempObj.default_code
-            _logger.info("kkkkkkkkkkk**")
-            _logger.info(price)                       
             if tempObj.product_variant_ids:
                 templateSku = tempObj.default_code or 'Template Ref %s' % tempObj.id
                 mageProdIds = self._sync_template_variants(
@@ -597,16 +582,11 @@ class MagentoSynchronization(models.TransientModel):
                 stockData = {
                     'is_in_stock': True
                 }
-                                    
                 extension_attributes = getProductData.get('extension_attributes', {})
                 extension_attributes.update({
                     'configurable_product_links': mageProdIds,
                     'configurable_product_options': optionsData,
-                    'stock_item': stockData,
-                    'base_price': price,
-                    'sku' : codex,
-                    'name' : namex,
-                    
+                    'stock_item': stockData
                 })
                 getProductData.update(
                     price=tempObj.list_price or 0.00,
