@@ -116,7 +116,6 @@ class ProductTemplate(models.Model):
             vals.pop('mage_id', None)
             vals = self.update_vals(vals)
         mapTempModel = self.env['magento.product.template']
-        
         for tempObj in self:
             tempMapObjs = mapTempModel.search(
                 [('template_name', '=', tempObj.id)])
@@ -125,44 +124,7 @@ class ProductTemplate(models.Model):
                     tempMapObj.need_sync = 'No'
                 else:
                     tempMapObj.need_sync = 'Yes'
-        prodTempObj = super(ProductTemplate, self).write(vals)
-## auto synch
-        successExpIds, successUpdtIds, templateIds = [], [], []
-        updtErrorIds, errorIds = [], []
-        connection = self.env['magento.configure']._create_connection()
-        if connection:
-            syncHistoryModel = self.env['magento.sync.history']
-            templateModel = self.env['product.template']
-            url = connection[0]
-            token = connection[1]
-            ctx = dict(self._context or {})
-            instanceId = ctx['instance_id'] = connection[2]
-            domain = [('instance_id', '=', instanceId)]
-                
-
-            connectionObj = self.env[
-                'magento.configure'].browse(instanceId)
-            warehouseId = connectionObj.warehouse_id.id
-            ctx['warehouse'] = warehouseId
-        for tempObj in self:
-            tempMapObjs = mapTempModel.search(
-                [('template_name', '=', tempObj.id)])
-            for tempMapObj in tempMapObjs:
-                
-                 
-                            prodUpdate = self.env['magento.synchronization'].with_context(
-                                ctx)._update_specific_product_template(
-                                tempMapObj, url, token)
-                            if prodUpdate[0] > 0:
-                                successUpdtIds.append(prodUpdate[1])
-                            else:
-                                updtErrorIds.append(prodUpdate[1])
-
-
-
-        ## fin auto synch            
-        return prodTempObj
-        
+        return super(ProductTemplate, self).write(vals)
 
     def update_vals(self, vals, create=False):
         if vals.get('default_code'):

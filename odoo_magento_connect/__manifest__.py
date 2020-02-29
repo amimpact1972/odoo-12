@@ -17,7 +17,7 @@
 {
     'name': 'Magento Odoo Bridge',
     'version': '2.0.0',
-    'category': 'Generic Modules ',
+    'category': 'Generic Modules',
     'author': 'Webkul Software Pvt. Ltd.',
     'website': 'https://store.webkul.com/Magento-2/Odoo-Bridge-For-Magento2.html',
     'sequence': 1,

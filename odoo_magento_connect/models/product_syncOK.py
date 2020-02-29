@@ -401,9 +401,9 @@ class MagentoSynchronization(models.TransientModel):
         custom_attributes = [
             {"attribute_code": "description", "value": prodObj.description},
             {"attribute_code": "short_description", "value": prodObj.description_sale},
+            {"attribute_code": "category_ids", "value": prodCategs},
             {"attribute_code": "cost", "value": prodObj.standard_price or 0.00}
         ]
-        #{"attribute_code": "category_ids", "value": prodCategs},
         if 'custom_attributes' not in getProductData :
             getProductData['custom_attributes']=custom_attributes
         else :
@@ -572,8 +572,6 @@ class MagentoSynchronization(models.TransientModel):
         domain = [('instance_id', '=', ctx.get('instance_id'))]
         if tempObj and mageProdId:
             price = tempObj.list_price or 0.0
-            namex = tempObj.name
-            codex = tempObj.default_code
             _logger.info("kkkkkkkkkkk**")
             _logger.info(price)                       
             if tempObj.product_variant_ids:
@@ -604,9 +602,6 @@ class MagentoSynchronization(models.TransientModel):
                     'configurable_product_options': optionsData,
                     'stock_item': stockData,
                     'base_price': price,
-                    'sku' : codex,
-                    'name' : namex,
-                    
                 })
                 getProductData.update(
                     price=tempObj.list_price or 0.00,
