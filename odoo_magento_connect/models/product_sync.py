@@ -394,9 +394,38 @@ class MagentoSynchronization(models.TransientModel):
         if prodObj.sale_ok:
             status = 2
         getProductData.update(
-            #name=prodObj.name,
+            name=prodObj.name,
             weight=prodObj.weight or 0.00,
             status=status
+        )
+        custom_attributes = [
+            {"attribute_code": "description", "value": prodObj.description},
+            {"attribute_code": "short_description", "value": prodObj.description_sale},
+            {"attribute_code": "cost", "value": prodObj.standard_price or 0.00}
+        ]
+        #{"attribute_code": "category_ids", "value": prodCategs},
+        if 'custom_attributes' not in getProductData :
+            getProductData['custom_attributes']=custom_attributes
+        else :
+            getProductData['custom_attributes']+=custom_attributes
+        imageData = self._get_product_media(prodObj)
+        if imageData:
+            getProductData.update(media_gallery_entries=[imageData])
+        return getProductData
+    ############# fetch product details ########
+    def _get_product_arrayup(self, url, token, prodObj, getProductData):
+        prodCategs = []
+        for categobj in prodObj.categ_ids:
+            mageCategId = self.sync_categories(url, token, categobj)
+            if mageCategId:
+                prodCategs.append(mageCategId)
+        status = 2 # fix status
+        if prodObj.sale_ok:
+            status = 2
+        getProductData.update(
+            #name=prodObj.name,
+            weight=prodObj.weight or 0.00,
+            #status=status
         )
         custom_attributes = [
             {"attribute_code": "description", "value": prodObj.description},
@@ -659,7 +688,7 @@ class MagentoSynchronization(models.TransientModel):
                 price=prodObj.list_price + priceExtra or 0.00,
                 custom_attributes=custom_attributes
             )
-            getProductData = self._get_product_array(
+            getProductData = self._get_product_arrayup(
                 url, token, prodObj, getProductData)
             if instanceId.inventory_sync == 'enable':
                 stockData = self._get_product_qty(prodObj)
