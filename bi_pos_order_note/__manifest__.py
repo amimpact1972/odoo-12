@@ -5,7 +5,8 @@
     "name" : "POS Order Note in odoo",
     "version" : "12.0.0.2",
     "category" : "Point of Sale",
-    "depends" : ['base','sale','point_of_sale'],
+    "depends" : ['base','sale','point_of_sale',
+                 ],
     "author": "BrowseInfo",
     'summary': 'This apps helps to add POS order note on TouchScreen, Receipt and Backend Order',
     "description": """
