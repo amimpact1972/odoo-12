@@ -107,10 +107,10 @@
                     <!--</td>-->
                     <!--</tr>-->
                     <tr>
-                        <td style="vertical-align:bottom;padding-top:3pt;padding-bottom:3pt">Sales Person</td>
+                        <td style="vertical-align:bottom;padding-top:3pt;padding-bottom:3pt">POS</td>
                         <td style="vertical-align:bottom;padding-top:3pt;padding-bottom:3pt;padding-left:3pt">:</td>
                         <td style="text-align:right;vertical-align:bottom;padding-right:5pt;padding-top:3pt;padding-bottom:3pt">
-                            <t t-esc="widget.pos.get_cashier().name"/>
+                    <t t-esc="widget.pos.pos_session.name"/>
                         </td>
                         <td style="vertical-align:bottom;padding-top:3pt;padding-bottom:3pt;padding-right:3pt">:</td>
                         <td style="text-align:right;vertical-align:bottom;text-size:7pt;padding-top:3pt;padding-bottom:3pt">
@@ -367,10 +367,10 @@
                     <!--</td>-->
                     <!--</tr>-->
                     <tr>
-                        <td style="vertical-align:bottom;padding-top:3pt;padding-bottom:3pt">Sales Person</td>
+                        <td style="vertical-align:bottom;padding-top:3pt;padding-bottom:3pt">POS</td>
                         <td style="vertical-align:bottom;padding-top:3pt;padding-bottom:3pt;padding-left:3pt">:</td>
                         <td style="text-align:right;vertical-align:bottom;padding-right:5pt;padding-top:3pt;padding-bottom:3pt">
-                            <t t-esc="widget.pos.get_cashier().name"/>
+                    <t t-esc="widget.pos.pos_session.name"/>
                         </td>
                         <td style="vertical-align:bottom;padding-top:3pt;padding-bottom:3pt;padding-right:3pt">:</td>
                         <td style="text-align:right;vertical-align:bottom;text-size:7pt;padding-top:3pt;padding-bottom:3pt">
