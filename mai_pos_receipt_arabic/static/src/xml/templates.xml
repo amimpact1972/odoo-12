@@ -45,15 +45,15 @@
                     </t>
                     <t t-if="widget.pos.company.state_arabic"><span t-esc="widget.pos.company.state_arabic"/>.
                     </t>
-                    <table style="margin-top:5pt;padding:5pt;">
-                        <tr t-if="widget.pos.company.vat">
-                            <td>VAT. No :</td>
-                            <td>
-                                <t t-esc="widget.pos.company.vat" style="text-align:right"/>
-                            </td>
-                            <td style="text-align:right">: الرقم الضريبي</td>
-                        </tr>
-                    </table>
+                    <!--<table style="margin-top:5pt;padding:5pt;">-->
+                        <!--<tr t-if="widget.pos.company.vat">-->
+                            <!--<td>VAT. No :</td>-->
+                            <!--<td>-->
+                                <!--<t t-esc="widget.pos.company.vat" style="text-align:right"/>-->
+                            <!--</td>-->
+                            <!--<td style="text-align:right">: الرقم الضريبي</td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
                     <t t-if="receipt.header">
                         <div style='text-align:center;padding-top:5pt'>
                             <t t-esc="receipt.header"/>
@@ -304,16 +304,16 @@
                             class="state`````````````````````````````````````````````````````````````````````````````````````````````````````````````````"
                             t-esc="widget.pos.company.state_arabic"/>.
                     </t>
-                    <table style="margin-top:5pt;padding:5pt;">
-                        <tr t-if="widget.pos.company.vat">
-                            <td>VAT:</td>
-                            <td style="text-size:9pt !important;font-size:9pt !important;">
-                                <t t-esc="widget.pos.company.vat"
-                                   style="text-align:right font-size:9pt !important text-size:9pt !important;;"/>
-                            </td>
-                            <td style="text-align:right">: الرقم الضريبي</td>
-                        </tr>
-                    </table>
+                    <!--<table style="margin-top:5pt;padding:5pt;">-->
+                        <!--<tr t-if="widget.pos.company.vat">-->
+                            <!--<td>VAT:</td>-->
+                            <!--<td style="text-size:9pt !important;font-size:9pt !important;">-->
+                                <!--<t t-esc="widget.pos.company.vat"-->
+                                   <!--style="text-align:right font-size:9pt !important text-size:9pt !important;;"/>-->
+                            <!--</td>-->
+                            <!--<td style="text-align:right">: الرقم الضريبي</td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
                     <t t-if="receipt.header">
                         <div style='text-align:center;padding-top:5pt'>
                             <t t-esc="receipt.header"/>
