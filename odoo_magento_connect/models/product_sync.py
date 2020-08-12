@@ -390,9 +390,9 @@ class MagentoSynchronization(models.TransientModel):
             mageCategId = self.sync_categories(url, token, categobj)
             if mageCategId:
                 prodCategs.append(mageCategId)
-        status = 2 # fix status
+        status = 1 # fix status
         if prodObj.sale_ok:
-            status = 2
+            status = 1 #temp fix
         getProductData.update(
             name=prodObj.name,
             weight=prodObj.weight or 0.00,
@@ -419,9 +419,9 @@ class MagentoSynchronization(models.TransientModel):
             mageCategId = self.sync_categories(url, token, categobj)
             if mageCategId:
                 prodCategs.append(mageCategId)
-        status = 2 # fix status
+        status = 1 # fix status
         if prodObj.sale_ok:
-            status = 2
+            status = 1 # temp status
         getProductData.update(
             #name=prodObj.name,
             weight=prodObj.weight or 0.00,
