@@ -250,7 +250,7 @@ class MagentoSynchronization(models.TransientModel):
                             'base_price': price,
                         }
                         getProductData.update(
-                            attribute_set_id=mageSetId, temp commit
+                            attribute_set_id=mageSetId, #temp commit for attribute id
                             visibility=4,
                             price=templateObj.list_price or 0.00,
                             sku='Template sku %s' % templateId,
