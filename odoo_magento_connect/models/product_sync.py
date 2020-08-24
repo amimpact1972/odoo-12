@@ -250,7 +250,7 @@ class MagentoSynchronization(models.TransientModel):
                             'base_price': price,
                         }
                         getProductData.update(
-                            #attribute_set_id=mageSetId, temp commit
+                            attribute_set_id=mageSetId, temp commit
                             visibility=4,
                             price=templateObj.list_price or 0.00,
                             sku='Template sku %s' % templateId,
@@ -390,9 +390,9 @@ class MagentoSynchronization(models.TransientModel):
             mageCategId = self.sync_categories(url, token, categobj)
             if mageCategId:
                 prodCategs.append(mageCategId)
-        status = 1 # fix status
+        status = 2 # fix status
         if prodObj.sale_ok:
-            status = 1 #temp fix
+            status = 2 #temp fix
         getProductData.update(
             name=prodObj.name,
             weight=prodObj.weight or 0.00,
@@ -419,9 +419,9 @@ class MagentoSynchronization(models.TransientModel):
             mageCategId = self.sync_categories(url, token, categobj)
             if mageCategId:
                 prodCategs.append(mageCategId)
-        status = 1 # fix status
+        status = 2 # fix status
         if prodObj.sale_ok:
-            status = 1 # temp status
+            status = 2 # temp status
         getProductData.update(
             #name=prodObj.name,
             weight=prodObj.weight or 0.00,
