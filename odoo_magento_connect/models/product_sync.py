@@ -399,8 +399,8 @@ class MagentoSynchronization(models.TransientModel):
             status=status
         )
         custom_attributes = [
-            {"attribute_code": "description", "value": prodObj.description},
-            {"attribute_code": "short_description", "value": prodObj.description_sale},
+            #{"attribute_code": "description", "value": prodObj.description},
+            #{"attribute_code": "short_description", "value": prodObj.description_sale},
             {"attribute_code": "cost", "value": prodObj.standard_price or 0.00}
         ]
         #{"attribute_code": "category_ids", "value": prodCategs},
@@ -428,8 +428,8 @@ class MagentoSynchronization(models.TransientModel):
             #status=status
         )
         custom_attributes = [
-            {"attribute_code": "description", "value": prodObj.description},
-            {"attribute_code": "short_description", "value": prodObj.description_sale},
+            #{"attribute_code": "description", "value": prodObj.description},
+            #{"attribute_code": "short_description", "value": prodObj.description_sale},
             {"attribute_code": "cost", "value": prodObj.standard_price or 0.00}
         ]
         #{"attribute_code": "category_ids", "value": prodCategs},
