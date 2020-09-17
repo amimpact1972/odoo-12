@@ -168,7 +168,7 @@ class MagentoSynchronization(models.TransientModel):
 
         apiUrl = baseUrl + "/index.php/rest" + url
         token = token.replace('"', "")
-        userAgent = request.httprequest.environ.get('HTTP_USER_AGENT', '')
+        userAgent = request.httprequest.headers.environ.get('HTTP_USER_AGENT', '')
         headers = {'Authorization': token,
                     'Content-Type': 'application/json', 'User-Agent': userAgent}
 
