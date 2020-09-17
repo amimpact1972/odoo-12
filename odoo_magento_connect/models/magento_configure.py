@@ -295,7 +295,7 @@ class MagentoConfigure(models.Model):
             "password": pwd
         }
         Cred = json.dumps(Cre)
-        userAgent = request.httprequest.environ.get('HTTP_USER_AGENT', '')
+        userAgent = request.httprequest.headers.environ.get('HTTP_USER_AGENT', '')
         headers = {'Content-Type': 'application/json', 'User-Agent': userAgent, 'User-Agent': userAgent}
         try:
             responseApi = requests.post(url, data=Cred, headers=headers, verify=False)
