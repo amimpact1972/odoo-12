@@ -295,16 +295,17 @@ class MagentoConfigure(models.Model):
             "password": pwd
         }
         Cred = json.dumps(Cre)
-        userAgent = request.httprequest.headers.environ.get('HTTP_USER_AGENT', '')
+        userAgent = request and request.httprequest.environ.get('HTTP_USER_AGENT', '') or None
         headers = {'Content-Type': 'application/json', 'User-Agent': userAgent, 'User-Agent': userAgent}
         try:
-            responseApi = requests.post(url, data=Cred, headers=headers, verify=False)
-            response = json.loads(responseApi.text)
-            if responseApi.ok :
-                token = "Bearer " + response
-                text = 'Test Connection with magento is successful, now you can proceed with synchronization.'
-            else :
-                text = ('Magento Connection Error: %s') % response.get('message')
+            if request:
+                responseApi = requests.post(url, data=Cred, headers=headers, verify=False)
+                response = json.loads(responseApi.text)
+                if responseApi.ok :
+                    token = "Bearer " + response
+                    text = 'Test Connection with magento is successful, now you can proceed with synchronization.'
+                else :
+                    text = ('Magento Connection Error: %s') % response.get('message')
         except Exception as e:
             text = ('Error!\nMagento Connection Error: %s') % e
         return [token, text]
