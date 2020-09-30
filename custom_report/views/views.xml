@@ -1,0 +1,12 @@
+<odoo>
+  <data>
+   <report
+            id="action_report_airway"
+            model="stock.picking"
+            string="Airway Bill"
+            name="custom_report.report_airway"
+            file="custom_report.report_airway"
+	    report_type="qweb-pdf"
+        />
+  </data>
+</odoo>
