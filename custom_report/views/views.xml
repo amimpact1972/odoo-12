@@ -6,7 +6,20 @@
             string="Airway Bill"
             name="custom_report.report_airway"
             file="custom_report.report_airway"
-	    report_type="qweb-pdf"
+	          report_type="qweb-pdf"
+            menu="False"
         />
+
+    <record id="view_airwaybill_form" model="ir.ui.view">
+        <field name="name">view.airwaybill.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button class="oe_highlight" type="object" name="print_airwaybill" 
+                  string="Print Air waybill" attrs="{'invisible': [('state', '!=', 'done')]}"/>
+            </xpath>
+        </field>
+    </record>
   </data>
 </odoo>

@@ -10,7 +10,7 @@
                           <img style="max-width:100%; position:absolute; top:20px;" t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)"/>
                         </div>
                         <div class="col-6">
-                          <t t-set="qr_url" t-value="'https://XXXXXX/picking/validate/%s'%o.name.replace('/','-')"/>
+                          <t t-set="qr_url" t-value="'/picking/validate/%s'%o.name.replace('/','-')"/>
                           <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', qr_url, 400, 400)" style="width:100px;height:100px ; border: 1px black dotted;" class="pull-right mr16 mb16"/>
                         </div>
                         </div>
