@@ -1,9 +1,12 @@
 <odoo>
     <data>
 <template id="report_airway">
+     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900')
+    </style>
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.basic_layout">
-                    <div class="page" style="font-size: 20px; margin-top: 20px;">
+                    <div class="page" style="font-size: 20px; margin-top: 20px; font-family: 'Cairo', sans-serif !important;">
                       <div class="oe_structure"/>
                       <div class="row">
                         <div class="col-6">
