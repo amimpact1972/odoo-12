@@ -9,10 +9,13 @@
         custom airway bill
     """,
 
-    'depends': ['sale_stock', 'account'],
+    'depends': ['sale_stock', 'account', 'point_of_sale'],
 
     'data': [
         'views/views.xml',
         'views/templates.xml',
+    ],
+    "qweb" : [
+        'static/src/xml/pos.xml',
     ],
 }
